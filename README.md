@@ -17,7 +17,7 @@ printed to the screen.
 
 Version Number 0.2  
 App last updated 25 September 2018  
-Readme last updated 3 October 2018
+Readme last updated 4 October 2018
 
 # Operation
 
@@ -39,7 +39,7 @@ number of students in each age band.
 
 ### Required Files
 
-- Date of birth file
+- Date of Birth File
 
 ## Location Data
 
@@ -48,7 +48,7 @@ percentage of students in each city and the number of students.
 
 ### Required Files
 
-- Cities file
+- Cities File
 
 ## Ethnicity Data
 
@@ -57,8 +57,8 @@ percentage of students in each ethnicity group and the number of students.
 
 ### Required Files
 
-- Ethnicities file
-- Pacific Island Nations file
+- Ethnicities File
+- Pacific Island Nations File
 
 ## Employment Data
 
@@ -67,7 +67,7 @@ percentage of students in each employment category and the number of students.
 
 ### Required Files
 
-- Employment file
+- Employment File
 
 ## Study Reason Data
 
@@ -77,7 +77,7 @@ number of students.
 
 ### Required Files
 
-- Study Reason file
+- Study Reason File
 
 ## How Heard Data
 
@@ -87,7 +87,7 @@ students.
 
 ### Required Files
 
-- How Heard file
+- How Heard File
 
 ## Average Length of Study
 
@@ -96,43 +96,43 @@ the mean, median, max and min values for each.
 
 ### Required Files
 
-- Enrolments file
-_ Graduates file
+- Enrolments File
+- Graduates File
 
 # Files used
 
-## Cities file
+## Cities File
 
 ### File Name
 
 cities_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID, AddressCity and AddressCountry for each student.
-
 ### Contents
 
 Student ID, AddressCity and AddressCountry for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID, AddressCity and AddressCountry for each student.
 
 ### Source
 
 qryXXXStudentsData query from the Student Database. The XXX is the target filtered
 group, e.g. All, Active, Maori etc.
 
-## Date of Birth file
+## Date of Birth File
 
 ### File Name
 
 births_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID and DateOfBirth for each student.
-
 ### Contents
 
 Student ID and DateOfBirth for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID and DateOfBirth for each student.
 
 ### Source
 
@@ -143,39 +143,39 @@ group, e.g. All, Active, Maori etc.
 
 Make sure the DateOfBirth column is in the format DD/MM/YYYY.
 
-## Employment file
+## Employment File
 
 ### File Name
 
 employment_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID and Employment for each student.
-
 ### Contents
 
 Student ID and Employment for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID and Employment for each student.
 
 ### Source
 
 qryXXXStudentsData query from the Student Database. The XXX is the target filtered
 group, e.g. All, Active, Maori etc.
 
-## Enrolments file
+## Enrolments File
 
 ### File Name
 
 enrolments_XXX.csv where XXX is the sample source.
 
+### Contents
+
+Enrolment details for each student in the filtered group.
+
 ### Structure
 
 CSV file with EnrolmentFK, StudentFK, TutorFK, ExpiryDate, Status and Tag for
 each student.
-
-### Contents
-
-Enrolment details for each student in the filtered group.
 
 ### Source
 
@@ -186,38 +186,38 @@ filtered group, e.g. All, Active, Maori etc.
 
 Make sure the StartDate and ExpiryDate columns are in the format DD/MM/YYYY.
 
-## Ethnicities file
+## Ethnicities File
 
 ### File Name
 
 ethnicity_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID and Ethnicity for each student.
-
 ### Contents
 
 Student ID and Ethnicity for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID and Ethnicity for each student.
 
 ### Source
 
 qryXXXStudentsData query from the Student Database. The XXX is the target filtered
 group, e.g. All, Active, Maori etc.
 
-## Graduates file
+## Graduates File
 
 ### File Name
 
 graduates.csv
 
-### Structure
-
-CSV file with GraduateFK, EnrolmentFK, GraduationDate and CertificateNumber.
-
 ### Contents
 
 Graduates details.
+
+### Structure
+
+CSV file with GraduateFK, EnrolmentFK, GraduationDate and CertificateNumber.
 
 ### Source
 
@@ -227,57 +227,57 @@ Graduates table of the Student Database.
 
 Make sure the GraduationDate column is in the format DD/MM/YYYY.
 
-## How Heard file
+## How Heard File
 
 ### File Name
 
 how_heard_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID and HowHeard for each student.
-
 ### Contents
 
 Student ID and HowHeard for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID and HowHeard for each student.
 
 ### Source
 
 qryXXXStudentsData query from the student database. The XXX is the target filtered
 group, e.g. All, Active, Maori etc.
 
-## Pacific Island Nations file
+## Pacific Island Nations File
 
 ### File Name
 
 pacific_island_nations.txt
+
+### Contents
+
+Each Pacific Island nation.
 
 ### Structure
 
 TXT file with each Pacific Island nation listed in a single line, separated by
 commas with no spaces after the comma.
 
-### Contents
-
-Each Pacific Island nation.
-
 ### Source
 
 Created at app set up and updated as required.
 
-## Study Reason file
+## Study Reason File
 
 ### File Name
 
 study_reason_XXX.csv where XXX is the sample source.
 
-### Structure
-
-CSV file with the Student ID and ReasonForStudy for each student.
-
 ### Contents
 
 Student ID and ReasonForStudy for each student in the filtered group.
+
+### Structure
+
+CSV file with the Student ID and ReasonForStudy for each student.
 
 ### Source
 
