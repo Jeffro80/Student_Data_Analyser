@@ -17,7 +17,7 @@ printed to the screen.
 
 Version Number 0.2  
 App last updated 25 September 2018  
-Readme last updated 4 October 2018
+Readme last updated 9 October 2018
 
 # Operation
 
@@ -31,7 +31,7 @@ dialog
 
 # Functions
 
-## Age data
+## Age Data
 
 Analyses age data from the Student Database and returns statistics regarding
 student age such as average, percentage of students in each age band and total
@@ -41,14 +41,24 @@ number of students in each age band.
 
 - Date of Birth File
 
-## Location Data
+## Average Length of Study
 
-Analyses location data from the Student Database and returns statistics regarding
-percentage of students in each city and the number of students.
+Analyses the average length of study for Online and Part time students and returns
+the mean, median, max and min values for each.
 
 ### Required Files
 
-- Cities File
+- Enrolments File
+- Graduates File
+
+## Employment Data
+
+Analyses employment data from the Student Database and returns statistics regarding
+percentage of students in each employment category and the number of students.
+
+### Required Files
+
+- Employment File
 
 ## Ethnicity Data
 
@@ -60,25 +70,6 @@ percentage of students in each ethnicity group and the number of students.
 - Ethnicities File
 - Pacific Island Nations File
 
-## Employment Data
-
-Analyses employment data from the Student Database and returns statistics regarding
-percentage of students in each employment category and the number of students.
-
-### Required Files
-
-- Employment File
-
-## Study Reason Data
-
-Analyses study reason data from the Student Database and returns statistics
-regarding percentage of students identifying each study reason category and the
-number of students.
-
-### Required Files
-
-- Study Reason File
-
 ## How Heard Data
 
 Analyses how heard data from the Student Database and returns statistics
@@ -89,15 +80,24 @@ students.
 
 - How Heard File
 
-## Average Length of Study
+## Location Data
 
-Analyses the average length of study for Online and Part time students and returns
-the mean, median, max and min values for each.
+Analyses location data from the Student Database and returns statistics regarding
+percentage of students in each city and the number of students.
 
 ### Required Files
 
-- Enrolments File
-- Graduates File
+- Cities File
+
+## Study Reason Data
+
+Analyses study reason data from the Student Database and returns statistics
+regarding percentage of students identifying each study reason category and the
+number of students.
+
+### Required Files
+
+- Study Reason File
 
 # Files used
 
