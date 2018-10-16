@@ -1,5 +1,5 @@
 # Student Data Analyser
-# Version 0.2 25 September 2018
+# Version 0.2 17 October 2018
 # Created by Jeff Mitchell
 # Analyses student data extracted from the Student Database
 
@@ -646,16 +646,16 @@ def process_how_heard_data():
     # Display results
     print('\nPercentage of {} students by How Heard Type:\n'.format(sample))
     print("{:40} {:7}".format('How Heard', 'Percent'))
-    for x in percent_heard_dict:
-        print("{:20} {:7}%".format(x[0], x[1]))
-    # Get a listof tuples with just results over 1%
+    for x in percent_heard_list:
+        print("{:40} {:7}%".format(x[0], x[1]))
+    # Get a list of tuples with just results over 1%
     threshold = 1
     threshold_heard_list = get_threshold_items(percent_heard_list, threshold)
     print('\nThe How Heard Types above the {}% threshold are as follows:\n'
           .format(threshold))
     print("{:40} {:7}".format('How Heard', 'Percent'))
     for x in threshold_heard_list:
-        print("{:20} {:7}%".format(x[0], x[1]))
+        print("{:40} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     # Save all how heard % to a CSV file, each key:value on a separate line
     headings = ['How Heard', 'Percent']
