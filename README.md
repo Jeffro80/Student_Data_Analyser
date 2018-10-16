@@ -16,8 +16,9 @@ printed to the screen.
 ## Version
 
 Version Number 0.2  
-App last updated 25 September 2018  
-Readme last updated 4 October 2018
+
+App last updated 17 October 2018  
+Readme last updated 17 October 2018
 
 # Operation
 
@@ -299,16 +300,14 @@ the app to run:
 ## Known bugs
 
 - Doubling up of print statements for saved files
-- How Heard output is garbled
 
 ## Items to fix
 
 - Remove doubling up of saved file print statements
-- Correct How Heard output
 
 ## Current development step
 
-- Fix bugs
+- Fix doubling up of saved file print statements
 
 ## Required development steps
 
