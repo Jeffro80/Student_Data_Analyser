@@ -299,15 +299,9 @@ the app to run:
 
 ## Known bugs
 
-- Doubling up of print statements for saved files
-
 ## Items to fix
 
-- Remove doubling up of saved file print statements
-
 ## Current development step
-
-- Fix doubling up of saved file print statements
 
 ## Required development steps
 
