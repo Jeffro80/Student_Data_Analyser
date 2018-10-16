@@ -510,24 +510,20 @@ def process_employment_data():
     print("{:20} {:7}".format('Employment', 'Percent'))
     for x in threshold_employ_list:
         print("{:20} {:7}%".format(x[0], x[1]))
-    print('\nTotal number of {} students in sample: {}'.format(sample, total))
+    print('\nTotal number of {} students in sample: {}\n'.format(sample, total))
     # Save all employment % to a CSV file, each key:value on a separate line
     headings = ['Employment', 'Percent']
-    f_name = '{}_Employment_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Employment_Percentage_'.format(sample) 
     ft.save_list_csv(percent_employ_list, headings, f_name)
-    print('\n{} Employment Percentages saved to {}'.format(sample, f_name))
+    print('')
     # Save threshold employment type with each key:value on a separate line
-    f_name = '{}_Top_Employment_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Top_Employment_Percentage_'.format(sample) 
     ft.save_list_csv(threshold_employ_list, headings, f_name)
-    print('\n{} Top Employment Percentages saved to {}'.format(sample, f_name))
+    print('')
     # Save all employment type counts to a CSV file
     headings = ['Employment', 'Count']
-    f_name = '{}_Employment_Count_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Employment_Count_'.format(sample) 
     ft.save_list_csv(count_employ_list, headings, f_name)
-    print('\n{} Employment Counts saved to {}'.format(sample, f_name))
     ft.process_warning_log(warnings, warnings_to_process)
 
 
@@ -575,9 +571,9 @@ def process_ethnicity_data():
     sample = get_sample()
     # Display results
     print('\nPercentage of {} students by ethnicity:\n'.format(sample))
-    print("{:20} {:7}".format('Ethnicity', 'Percent'))
+    print("{:40} {:7}".format('Ethnicity', 'Percent'))
     for x in percent_eths_list:
-        print("{:20} {:7}%".format(x[0], x[1]))
+        print("{:40} {:7}%".format(x[0], x[1]))
     # Get a list of tuples with just results over 1%
     threshold = 1
     threshold_eths_list = get_threshold_items(percent_eths_list, threshold)
@@ -589,23 +585,20 @@ def process_ethnicity_data():
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     print('\nTotal number of ethnicities in {} student sample: {}'.format(
             sample, len(unique_eth)))
+    print('')
     # Save all ethnicities % to a CSV file, each key:value on a separate line
     headings = ['Ethnicity', 'Percent']
-    f_name = '{}_Ethnicities_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Ethnicities_Percentage_'.format(sample) 
     ft.save_list_csv(percent_eths_list, headings, f_name)
-    print('\n{} Ethnicity Percentages saved to {}'.format(sample, f_name))
+    print('')
     # Save threshold ethnicities with each key:value on a separate line
-    f_name = '{}_Top_Ethnicities_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Top_Ethnicities_Percentage_'.format(sample) 
     ft.save_list_csv(threshold_eths_list, headings, f_name)
-    print('\n{} Top Ethnicity Percentages saved to {}'.format(sample, f_name))
+    print('')
     # Save all ethnicities counts to a CSV file
     headings = ['Ethnicity', 'Count']
-    f_name = '{}_Ethnicities_Count_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Ethnicities_Count_'.format(sample) 
     ft.save_list_csv(count_eths_list, headings, f_name)
-    print('\n{} Ethnicity Counts saved to {}'.format(sample, f_name))
     ft.process_warning_log(warnings, warnings_to_process)
 
 
@@ -659,21 +652,18 @@ def process_how_heard_data():
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     # Save all how heard % to a CSV file, each key:value on a separate line
     headings = ['How Heard', 'Percent']
-    f_name = '{}_How_Heard_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_How_Heard_Percentage_'.format(sample)
+    print('')
     ft.save_list_csv(percent_heard_list, headings, f_name)
-    print('\n{} How Heard Percentages saved to {}'.format(sample, f_name))
     # Save threshold how heard with each key:value on a separate line
-    f_name = '{}_Top_How Heard_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Top_How Heard_Percentage_'.format(sample)
+    print('') 
     ft.save_list_csv(threshold_heard_list, headings, f_name)
-    print('\n{} Top How Heard Percentages saved to {}'.format(sample, f_name))
     # Save all how heard counts to a CSV file
     headings = ['How Heard', 'Count']
-    f_name = '{}_How_Heard_Count_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_How_Heard_Count_'.format(sample)
+    print('') 
     ft.save_list_csv(count_heard_list, headings, f_name)
-    print('\n{} How Heard Counts saved to {}'.format(sample, f_name))
     ft.process_warning_log(warnings, warnings_to_process)
 
 
@@ -737,21 +727,18 @@ def process_location_data():
             sample, len(unique_cities)))
     # Save all cities % to a CSV file with each key:value on a separate line
     headings = ['City', 'Percent']
-    f_name = '{}_Cities_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Cities_Percentage_'.format(sample)
+    print('') 
     ft.save_list_csv(percent_cities_list, headings, f_name)
-    print('\n{} City Percentages saved to {}'.format(sample, f_name))
     # Save threshold cities with each key:value on a separate line
-    f_name = '{}_Top_Cities_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Top_Cities_Percentage_'.format(sample)
+    print('') 
     ft.save_list_csv(threshold_cities_list, headings, f_name)
-    print('\n{} Top City Percentages saved to {}'.format(sample, f_name))
     # Save all cities counts to a CSV file
     headings = ['City', 'Count']
-    f_name = '{}_Cities_Count_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Cities_Count_'.format(sample)
+    print('')
     ft.save_list_csv(count_cities_list, headings, f_name)
-    print('\n{} City Counts saved to {}'.format(sample, f_name))
     ft.process_warning_log(warnings, warnings_to_process)
 
 
@@ -811,7 +798,6 @@ def process_study_length():
               ft.generate_time_string(), '.xls')
     stats.to_excel(f_name)
     print('\nData saved to {}'.format(f_name))
-
     # print('Groups: {}'.format(grouped_grads.groups.keys()))
     # print(updated_grads)
     ft.process_warning_log(warnings, warnings_to_process)
@@ -855,7 +841,7 @@ def process_study_reason_data():
     print('\nPercentage of {} students by Study Reason Type:\n'.format(sample))
     print("{:50} {:7}".format('Study Reason', 'Percent'))
     for x in percent_reason_list:
-        print("{:20} {:7}%".format(x[0], x[1]))
+        print("{:50} {:7}%".format(x[0], x[1]))
     # Get a list of tuples with just results over 1%
     threshold = 1
     threshold_reason_list = get_threshold_items(percent_reason_list, threshold)
@@ -863,26 +849,22 @@ def process_study_reason_data():
           .format(threshold))
     print("{:50} {:7}".format('Study Reason', 'Percent'))
     for x in threshold_reason_list:
-        print("{:20} {:7}%".format(x[0], x[1]))
+        print("{:50} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     # Save all study reasons % to a CSV file, each key:value on a separate line
     headings = ['Study Reason', 'Percent']
-    f_name = '{}_Study_Reason_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Study_Reason_Percentage_'.format(sample)
+    print('') 
     ft.save_list_csv(percent_reason_list, headings, f_name)
-    print('\n{} Study Reason Percentages saved to {}'.format(sample, f_name))
     # Save threshold study reason with each key:value on a separate line
-    f_name = '{}_Top_Study_Reason_Percentage_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Top_Study_Reason_Percentage_'.format(sample)
+    print('')
     ft.save_list_csv(threshold_reason_list, headings, f_name)
-    print('\n{} Top Study Reason Percentages saved to {}'.format(sample,
-          f_name))
     # Save all study reason counts to a CSV file
     headings = ['Study Reason', 'Count']
-    f_name = '{}_Study_Reason_Count_{}.csv'.format(sample,
-                 ft.generate_time_string()) 
+    f_name = '{}_Study_Reason_Count_'.format(sample)
+    print('')
     ft.save_list_csv(count_reason_list, headings, f_name)
-    print('\n{} Study Reason Counts saved to {}'.format(sample, f_name))
     ft.process_warning_log(warnings, warnings_to_process)
 
 
