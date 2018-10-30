@@ -1,26 +1,7 @@
 # Student Data Analyser
-# Version 0.2 17 October 2018
+# Version 0.2 30 October 2018
 # Created by Jeff Mitchell
 # Analyses student data extracted from the Student Database
-
-# Current work:
-
-# - Sorting data before saving
-
-# To Add:
-
-# - Function that generates the age band values (currently done manually)
-# - Move calculate_percent to a module and add check that values are int
-# - Move total_dict_values to a module and add check that values are int
-# - Calculations of age at enrolment - use enrolment date rather than today
-
-# Known issues
-
-# - 
-
-# To Fix:
-
-# - 
 
 
 import custtools.admintools as ad
