@@ -18,7 +18,7 @@ printed to the screen.
 Version Number 0.2  
 
 App last updated 17 October 2018  
-Readme last updated 17 October 2018
+Readme last updated 2 November 2018
 
 # Operation
 
@@ -303,6 +303,9 @@ the app to run:
 
 ## Current development step
 
+- Refactor so that analysis can run off one source file (active, all etc.) and
+pull out the required columns
+
 ## Required development steps
 
 - 
@@ -313,3 +316,6 @@ the app to run:
 - Move calculate_percent to a module and add check that values are int
 - Move total_dict_values to a module and add check that values are int
 - Calculations of age at enrolment - use enrolment date rather than today
+- Combine count and % outputs into one save file: item - % - #
+- Refactor so that analysis can run off one source file (active, all etc.) and
+pull out the required columns
