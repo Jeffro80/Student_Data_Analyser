@@ -360,7 +360,7 @@ def main():
 def main_message():
     """Print the menu of options."""
     print('\n\n*************==========================*****************')
-    print('\nStudent Data Analyser version 0.2')
+    print('\nStudent Data Analyser version 0.21')
     print('Created by Jeff Mitchell, 2018')
     print('\nOptions:')
     print('\n1. Help Menu')
@@ -380,16 +380,20 @@ def process_age_data():
     warnings_to_process = False
     print('\nProcessing Age Data.')
     # Confirm the required files are in place
-    required_files = ['Date of Birth file']
+    required_files = ['Student Data File', 'Student Data Headings File']
     ad.confirm_files('Age Data', required_files)
-    # Load Date of Birth data
-    birth_data = ft.get_csv_fname_load('Birth Data')
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
+    birth_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
     age_col = 'Age'
-    sid_col = 'StudentID'
+    sid_col = 'StudentPK'
     dob_col = 'DateOfBirth'
     headings = [sid_col, dob_col]
-    birth_df = pd.DataFrame(data = birth_data, columns = headings)
+    birth_df =  birth_df[headings]
     # Remove duplicate Student ID Numbers
     birth_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without a Date of Birth
