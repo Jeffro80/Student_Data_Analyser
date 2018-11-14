@@ -43,6 +43,16 @@ number of students in each age band.
 - Student Data File
 - Student Data Headings File
 
+## Average Length of Study
+
+Analyses the average length of study for Online and Part time students and returns
+the mean, median, max and min values for each.
+
+### Required Files
+
+- Enrolments File
+- Graduates File
+
 ## Employment Data
 
 Analyses employment data from the Student Database and returns statistics regarding
@@ -52,6 +62,8 @@ percentage of students in each employment category and the number of students.
 
 - Student Data File
 - Student Data Headings File
+
+## Enrolments
 
 ## Ethnicity Data
 
