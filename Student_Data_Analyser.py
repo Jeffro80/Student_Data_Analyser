@@ -671,16 +671,20 @@ def process_location_data():
     warnings_to_process = False
     print('\nProcessing Location Data.')
     # Confirm the required files are in place
-    required_files = ['Cities File']
-    ad.confirm_files('Location Data', required_files)
-    # Load cities data
-    cities_data = ft.get_csv_fname_load('Location Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    students_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    cities_df = pd.DataFrame(data = students_data, columns = data_headings)
+    # Remove unnecessary columns
+    sid_col = 'StudentPK'
     city_col = 'AddressCity'
     country_col = 'AddressCountry'
     headings = [sid_col, city_col, country_col]
-    cities_df = pd.DataFrame(data = cities_data, columns = headings)
+    cities_df = cities_df[headings]
     # Remove duplicate Student ID Numbers
     cities_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without an AddressCity
