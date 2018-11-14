@@ -811,15 +811,19 @@ def process_study_reason_data():
     warnings_to_process = False
     print('\nProcessing Reason for Study Data.')
     # Confirm the required files are in place
-    required_files = ['Study Reason File']
-    ad.confirm_files('Study Reason Data', required_files)
-    # Load study reason data
-    study_data = ft.get_csv_fname_load('Study Reason Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    students_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
-    reason_col = 'Study Reason'
+    study_df = pd.DataFrame(data = students_data, columns = data_headings)
+    # Remove unnecessary columns
+    sid_col = 'StudentPK'
+    reason_col = 'ReasonForStudy'
     headings = [sid_col, reason_col]
-    study_df = pd.DataFrame(data = study_data, columns = headings)
+    study_df = study_df[headings]
     # Remove duplicate Student ID Numbers
     study_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without a study reason entry to 'Unknown'
