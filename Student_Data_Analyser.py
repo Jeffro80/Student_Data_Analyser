@@ -465,6 +465,7 @@ def process_employment_data():
     sid_col = 'StudentPK'
     employment_col = 'Employment'
     headings = [sid_col, employment_col]
+    employment_df = employment_df[headings]
     # Remove duplicate Student ID Numbers
     employment_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without an Employment entry to 'Unknown'
@@ -521,17 +522,22 @@ def process_ethnicity_data():
     warnings_to_process = False
     print('\nProcessing Ethnicity Data.')
     # Confirm the required files are in place
-    required_files = ['Ethnicities File', 'Pacific Island Nations File']
-    ad.confirm_files('Ethnicity Data', required_files)
+    required_files = ['Student Data File', 'Student Data Headings File',
+                      'Pacific Island Nations File']
+    ad.confirm_files('Student Data', required_files)
     # Load Pacific Island Nations File
     island_nations = ft.load_headings('pacific_island_nations.txt')
     # Load ethincities data
-    ethnicities_data = ft.get_csv_fname_load('Ethnicity Data')
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    ethnicities_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     eth_col = 'Ethnicity'
     headings = [sid_col, eth_col]
-    ethnicities_df = pd.DataFrame(data = ethnicities_data, columns = headings)
+    ethnicities_df = ethnicities_df[headings]
     # Remove duplicate Student ID Numbers
     ethnicities_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without an Ethnicity
