@@ -602,15 +602,19 @@ def process_how_heard_data():
     warnings_to_process = False
     print('\nProcessing How Heard Data.')
     # Confirm the required files are in place
-    required_files = ['How Heard File']
-    ad.confirm_files('How Heard Data', required_files)
-    # Load how heard data
-    heard_data = ft.get_csv_fname_load('How Heard Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    heard_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     heard_col = 'HowHeard'
     headings = [sid_col, heard_col]
-    heard_df = pd.DataFrame(data = heard_data, columns = headings)
+    heard_df = heard_df[headings]
     # Remove duplicate Student ID Numbers
     heard_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without a How Heard entry to 'Unknown'
