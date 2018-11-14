@@ -1,5 +1,5 @@
 # Student Data Analyser
-# Version 0.2 30 October 2018
+# Version 0.21 15 November 2018
 # Created by Jeff Mitchell
 # Analyses student data extracted from the Student Database
 
