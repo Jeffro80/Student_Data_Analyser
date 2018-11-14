@@ -381,7 +381,7 @@ def process_age_data():
     print('\nProcessing Age Data.')
     # Confirm the required files are in place
     required_files = ['Student Data File', 'Student Data Headings File']
-    ad.confirm_files('Age Data', required_files)
+    ad.confirm_files('Student Data', required_files)
     # Load Student data
     student_data = ft.get_csv_fname_load('Student Data File')
     # Load headings file
@@ -453,15 +453,18 @@ def process_employment_data():
     warnings_to_process = False
     print('\nProcessing Employment Data.')
     # Confirm the required files are in place
-    required_files = ['Employment File']
-    ad.confirm_files('Employment Data', required_files)
-    # Load employment data
-    employment_data = ft.get_csv_fname_load('Employment Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    employment_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     employment_col = 'Employment'
     headings = [sid_col, employment_col]
-    employment_df = pd.DataFrame(data = employment_data, columns = headings)
     # Remove duplicate Student ID Numbers
     employment_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without an Employment entry to 'Unknown'
