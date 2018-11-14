@@ -15,10 +15,10 @@ printed to the screen.
 
 ## Version
 
-Version Number 0.2  
+Version Number 0.21  
 
-App last updated 17 October 2018  
-Readme last updated 2 November 2018
+App last updated 15 November 2018  
+Readme last updated 15 November 2018
 
 # Operation
 
@@ -40,17 +40,8 @@ number of students in each age band.
 
 ### Required Files
 
-- Date of Birth File
-
-## Average Length of Study
-
-Analyses the average length of study for Online and Part time students and returns
-the mean, median, max and min values for each.
-
-### Required Files
-
-- Enrolments File
-- Graduates File
+- Student Data File
+- Student Data Headings File
 
 ## Employment Data
 
@@ -59,16 +50,18 @@ percentage of students in each employment category and the number of students.
 
 ### Required Files
 
-- Employment File
+- Student Data File
+- Student Data Headings File
 
 ## Ethnicity Data
 
-Analyses ethnicity data from the Student Database and returns statistics regarding
-percentage of students in each ethnicity group and the number of students.
+Analyses the average length of study for Online and Part time students and returns
+the mean, median, max and min values for each.
 
 ### Required Files
 
-- Ethnicities File
+- Student Data File
+- Student Data Headings File
 - Pacific Island Nations File
 
 ## How Heard Data
@@ -79,7 +72,8 @@ students.
 
 ### Required Files
 
-- How Heard File
+- Student Data File
+- Student Data Headings File
 
 ## Location Data
 
@@ -88,7 +82,8 @@ percentage of students in each city and the number of students.
 
 ### Required Files
 
-- Cities File
+- Student Data File
+- Student Data Headings File
 
 ## Study Reason Data
 
@@ -98,70 +93,10 @@ number of students.
 
 ### Required Files
 
-- Study Reason File
+- Student Data File
+- Student Data Headings File
 
 # Files used
-
-## Cities File
-
-### File Name
-
-cities_XXX.csv where XXX is the sample source.
-
-### Contents
-
-Student ID, AddressCity and AddressCountry for each student in the filtered group.
-
-### Structure
-
-CSV file with the Student ID, AddressCity and AddressCountry for each student.
-
-### Source
-
-qryXXXStudentsData query from the Student Database. The XXX is the target filtered
-group, e.g. All, Active, Maori etc.
-
-## Date of Birth File
-
-### File Name
-
-births_XXX.csv where XXX is the sample source.
-
-### Contents
-
-Student ID and DateOfBirth for each student in the filtered group.
-
-### Structure
-
-CSV file with the Student ID and DateOfBirth for each student.
-
-### Source
-
-qryXXXStudentsData query from the Student Database. The XXX is the target filtered
-group, e.g. All, Active, Maori etc.
-
-### Notes
-
-Make sure the DateOfBirth column is in the format DD/MM/YYYY.
-
-## Employment File
-
-### File Name
-
-employment_XXX.csv where XXX is the sample source.
-
-### Contents
-
-Student ID and Employment for each student in the filtered group.
-
-### Structure
-
-CSV file with the Student ID and Employment for each student.
-
-### Source
-
-qryXXXStudentsData query from the Student Database. The XXX is the target filtered
-group, e.g. All, Active, Maori etc.
 
 ## Enrolments File
 
@@ -187,25 +122,6 @@ filtered group, e.g. All, Active, Maori etc.
 
 Make sure the StartDate and ExpiryDate columns are in the format DD/MM/YYYY.
 
-## Ethnicities File
-
-### File Name
-
-ethnicity_XXX.csv where XXX is the sample source.
-
-### Contents
-
-Student ID and Ethnicity for each student in the filtered group.
-
-### Structure
-
-CSV file with the Student ID and Ethnicity for each student.
-
-### Source
-
-qryXXXStudentsData query from the Student Database. The XXX is the target filtered
-group, e.g. All, Active, Maori etc.
-
 ## Graduates File
 
 ### File Name
@@ -228,25 +144,6 @@ Graduates table of the Student Database.
 
 Make sure the GraduationDate column is in the format DD/MM/YYYY.
 
-## How Heard File
-
-### File Name
-
-how_heard_XXX.csv where XXX is the sample source.
-
-### Contents
-
-Student ID and HowHeard for each student in the filtered group.
-
-### Structure
-
-CSV file with the Student ID and HowHeard for each student.
-
-### Source
-
-qryXXXStudentsData query from the student database. The XXX is the target filtered
-group, e.g. All, Active, Maori etc.
-
 ## Pacific Island Nations File
 
 ### File Name
@@ -266,24 +163,50 @@ commas with no spaces after the comma.
 
 Created at app set up and updated as required.
 
-## Study Reason File
+## Student Data File
 
 ### File Name
 
-study_reason_XXX.csv where XXX is the sample source.
+XXX_student_data.csv where XXX is the sample source.
 
 ### Contents
 
-Student ID and ReasonForStudy for each student in the filtered group.
+Data on each student enrolment taken from the database.
 
 ### Structure
 
-CSV file with the Student ID and ReasonForStudy for each student.
+CSV file with the following column headings: StudentPK,NameGiven,NameSurname,
+Gender,DateOfBirth,AddressCity,AddressCountry,Ethnicity,EnrolmentPK,CourseFK,
+StartDate,ExpiryDate,Status,Employment,ReasonForStudy,HowHeard
 
 ### Source
 
 qryXXXStudentsData query from the Student Database. The XXX is the target filtered
 group, e.g. All, Active, Maori etc.
+
+### Notes
+
+Make sure the DateOfBirth, StartDate and ExpiryDate columns are in the format
+DD/MM/YYYY.
+
+## Student Data Headings File
+
+### File Name
+
+data_headings.txt
+
+### Contents
+
+Each column heading for data in XXX_student_data file.
+
+### Structure
+
+TXT file with each column heading on one line, separated by commas.
+
+### Source
+
+Column headings extracted from qryXXXStudentsData query from the Student
+Database. 
 
 # Dependencies
 
@@ -303,8 +226,7 @@ the app to run:
 
 ## Current development step
 
-- Refactor so that analysis can run off one source file (active, all etc.) and
-pull out the required columns
+- Combine count and % outputs into one save file: item - % - #
 
 ## Required development steps
 
@@ -316,6 +238,3 @@ pull out the required columns
 - Move calculate_percent to a module and add check that values are int
 - Move total_dict_values to a module and add check that values are int
 - Calculations of age at enrolment - use enrolment date rather than today
-- Combine count and % outputs into one save file: item - % - #
-- Refactor so that analysis can run off one source file (active, all etc.) and
-pull out the required columns

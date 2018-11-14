@@ -1,26 +1,7 @@
 # Student Data Analyser
-# Version 0.2 17 October 2018
+# Version 0.21 15 November 2018
 # Created by Jeff Mitchell
 # Analyses student data extracted from the Student Database
-
-# Current work:
-
-# - Sorting data before saving
-
-# To Add:
-
-# - Function that generates the age band values (currently done manually)
-# - Move calculate_percent to a module and add check that values are int
-# - Move total_dict_values to a module and add check that values are int
-# - Calculations of age at enrolment - use enrolment date rather than today
-
-# Known issues
-
-# - 
-
-# To Fix:
-
-# - 
 
 
 import custtools.admintools as ad
@@ -379,7 +360,7 @@ def main():
 def main_message():
     """Print the menu of options."""
     print('\n\n*************==========================*****************')
-    print('\nStudent Data Analyser version 0.2')
+    print('\nStudent Data Analyser version 0.21')
     print('Created by Jeff Mitchell, 2018')
     print('\nOptions:')
     print('\n1. Help Menu')
@@ -399,16 +380,20 @@ def process_age_data():
     warnings_to_process = False
     print('\nProcessing Age Data.')
     # Confirm the required files are in place
-    required_files = ['Date of Birth file']
-    ad.confirm_files('Age Data', required_files)
-    # Load Date of Birth data
-    birth_data = ft.get_csv_fname_load('Birth Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
+    birth_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
     age_col = 'Age'
-    sid_col = 'StudentID'
+    sid_col = 'StudentPK'
     dob_col = 'DateOfBirth'
     headings = [sid_col, dob_col]
-    birth_df = pd.DataFrame(data = birth_data, columns = headings)
+    birth_df =  birth_df[headings]
     # Remove duplicate Student ID Numbers
     birth_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without a Date of Birth
@@ -468,15 +453,19 @@ def process_employment_data():
     warnings_to_process = False
     print('\nProcessing Employment Data.')
     # Confirm the required files are in place
-    required_files = ['Employment File']
-    ad.confirm_files('Employment Data', required_files)
-    # Load employment data
-    employment_data = ft.get_csv_fname_load('Employment Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    employment_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     employment_col = 'Employment'
     headings = [sid_col, employment_col]
-    employment_df = pd.DataFrame(data = employment_data, columns = headings)
+    employment_df = employment_df[headings]
     # Remove duplicate Student ID Numbers
     employment_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without an Employment entry to 'Unknown'
@@ -533,17 +522,22 @@ def process_ethnicity_data():
     warnings_to_process = False
     print('\nProcessing Ethnicity Data.')
     # Confirm the required files are in place
-    required_files = ['Ethnicities File', 'Pacific Island Nations File']
-    ad.confirm_files('Ethnicity Data', required_files)
+    required_files = ['Student Data File', 'Student Data Headings File',
+                      'Pacific Island Nations File']
+    ad.confirm_files('Student Data', required_files)
     # Load Pacific Island Nations File
     island_nations = ft.load_headings('pacific_island_nations.txt')
     # Load ethincities data
-    ethnicities_data = ft.get_csv_fname_load('Ethnicity Data')
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    ethnicities_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     eth_col = 'Ethnicity'
     headings = [sid_col, eth_col]
-    ethnicities_df = pd.DataFrame(data = ethnicities_data, columns = headings)
+    ethnicities_df = ethnicities_df[headings]
     # Remove duplicate Student ID Numbers
     ethnicities_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without an Ethnicity
@@ -608,15 +602,19 @@ def process_how_heard_data():
     warnings_to_process = False
     print('\nProcessing How Heard Data.')
     # Confirm the required files are in place
-    required_files = ['How Heard File']
-    ad.confirm_files('How Heard Data', required_files)
-    # Load how heard data
-    heard_data = ft.get_csv_fname_load('How Heard Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    student_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    heard_df = pd.DataFrame(data = student_data, columns = data_headings)
+    # Drop unnecessary columns
+    sid_col = 'StudentPK'
     heard_col = 'HowHeard'
     headings = [sid_col, heard_col]
-    heard_df = pd.DataFrame(data = heard_data, columns = headings)
+    heard_df = heard_df[headings]
     # Remove duplicate Student ID Numbers
     heard_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without a How Heard entry to 'Unknown'
@@ -673,16 +671,20 @@ def process_location_data():
     warnings_to_process = False
     print('\nProcessing Location Data.')
     # Confirm the required files are in place
-    required_files = ['Cities File']
-    ad.confirm_files('Location Data', required_files)
-    # Load cities data
-    cities_data = ft.get_csv_fname_load('Location Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    students_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
+    cities_df = pd.DataFrame(data = students_data, columns = data_headings)
+    # Remove unnecessary columns
+    sid_col = 'StudentPK'
     city_col = 'AddressCity'
     country_col = 'AddressCountry'
     headings = [sid_col, city_col, country_col]
-    cities_df = pd.DataFrame(data = cities_data, columns = headings)
+    cities_df = cities_df[headings]
     # Remove duplicate Student ID Numbers
     cities_df.drop_duplicates(sid_col, 'first', True)
     # Remove students without an AddressCity
@@ -809,15 +811,19 @@ def process_study_reason_data():
     warnings_to_process = False
     print('\nProcessing Reason for Study Data.')
     # Confirm the required files are in place
-    required_files = ['Study Reason File']
-    ad.confirm_files('Study Reason Data', required_files)
-    # Load study reason data
-    study_data = ft.get_csv_fname_load('Study Reason Data')
+    required_files = ['Student Data File', 'Student Data Headings File']
+    ad.confirm_files('Student Data', required_files)
+    # Load Student data
+    students_data = ft.get_csv_fname_load('Student Data File')
+    # Load headings file
+    data_headings = ft.load_headings('data_headings.txt')
     # Place data into a DataFrame
-    sid_col = 'StudentID'
-    reason_col = 'Study Reason'
+    study_df = pd.DataFrame(data = students_data, columns = data_headings)
+    # Remove unnecessary columns
+    sid_col = 'StudentPK'
+    reason_col = 'ReasonForStudy'
     headings = [sid_col, reason_col]
-    study_df = pd.DataFrame(data = study_data, columns = headings)
+    study_df = study_df[headings]
     # Remove duplicate Student ID Numbers
     study_df.drop_duplicates(sid_col, 'first', True)
     # Convert students without a study reason entry to 'Unknown'
