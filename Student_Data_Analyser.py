@@ -861,19 +861,12 @@ def process_study_reason_data():
         print("{:50} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     # Save all study reasons % to a CSV file, each key:value on a separate line
-    headings = ['Study Reason', 'Percent']
-    f_name = '{}_Study_Reason_Percentage_'.format(sample)
-    print('') 
-    ft.save_list_csv(percent_reason_list, headings, f_name)
-    # Save threshold study reason with each key:value on a separate line
-    f_name = '{}_Top_Study_Reason_Percentage_'.format(sample)
-    print('')
-    ft.save_list_csv(threshold_reason_list, headings, f_name)
-    # Save all study reason counts to a CSV file
-    headings = ['Study Reason', 'Count']
-    f_name = '{}_Study_Reason_Count_'.format(sample)
-    print('')
-    ft.save_list_csv(count_reason_list, headings, f_name)
+    # Combine Percentage and Count columns
+    combined_lists = combine_lists(percent_reason_list, count_reason_list)
+    # Save % and # data
+    headings = ['Study Reason', 'Percent', 'Count']
+    f_name = '{}_Study_Reason_Combined_'.format(sample)
+    ft.save_list_csv(combined_lists, headings, f_name)
     ft.process_warning_log(warnings, warnings_to_process)
 
 
