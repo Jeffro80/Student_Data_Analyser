@@ -15,10 +15,10 @@ printed to the screen.
 
 ## Version
 
-Version Number 0.21  
+Version Number 0.22  
 
-App last updated 15 November 2018  
-Readme last updated 15 November 2018
+App last updated 19 November 2018  
+Readme last updated 19 November 2018
 
 # Operation
 
@@ -238,7 +238,7 @@ the app to run:
 
 ## Current development step
 
-- Combine count and % outputs into one save file: item - % - #
+- Calculations of age at enrolment - use enrolment date rather than today
 
 ## Required development steps
 
