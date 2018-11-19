@@ -605,19 +605,12 @@ def process_ethnicity_data():
     print('\nTotal number of ethnicities in {} student sample: {}'.format(
             sample, len(unique_eth)))
     print('')
-    # Save all ethnicities % to a CSV file, each key:value on a separate line
-    headings = ['Ethnicity', 'Percent']
-    f_name = '{}_Ethnicities_Percentage_'.format(sample) 
-    ft.save_list_csv(percent_eths_list, headings, f_name)
-    print('')
-    # Save threshold ethnicities with each key:value on a separate line
-    f_name = '{}_Top_Ethnicities_Percentage_'.format(sample) 
-    ft.save_list_csv(threshold_eths_list, headings, f_name)
-    print('')
-    # Save all ethnicities counts to a CSV file
-    headings = ['Ethnicity', 'Count']
-    f_name = '{}_Ethnicities_Count_'.format(sample) 
-    ft.save_list_csv(count_eths_list, headings, f_name)
+    # Combine Percentage and Count columns
+    combined_lists = combine_lists(percent_eths_list, count_eths_list)
+    # Save % and # data
+    headings = ['Ethnicity', 'Percent', 'Count']
+    f_name = '{}_Ethnicities_Combined_'.format(sample)
+    ft.save_list_csv(combined_lists, headings, f_name)
     ft.process_warning_log(warnings, warnings_to_process)
 
 
