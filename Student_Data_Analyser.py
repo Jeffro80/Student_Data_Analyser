@@ -1,5 +1,5 @@
 # Student Data Analyser
-# Version 0.21 15 November 2018
+# Version 0.22 19 November 2018
 # Created by Jeff Mitchell
 # Analyses student data extracted from the Student Database
 
@@ -391,7 +391,7 @@ def main():
 def main_message():
     """Print the menu of options."""
     print('\n\n*************==========================*****************')
-    print('\nStudent Data Analyser version 0.21')
+    print('\nStudent Data Analyser version 0.22')
     print('Created by Jeff Mitchell, 2018')
     print('\nOptions:')
     print('\n1. Help Menu')
@@ -530,20 +530,14 @@ def process_employment_data():
     print("{:20} {:7}".format('Employment', 'Percent'))
     for x in threshold_employ_list:
         print("{:20} {:7}%".format(x[0], x[1]))
-    print('\nTotal number of {} students in sample: {}\n'.format(sample, total))
-    # Save all employment % to a CSV file, each key:value on a separate line
-    headings = ['Employment', 'Percent']
-    f_name = '{}_Employment_Percentage_'.format(sample) 
-    ft.save_list_csv(percent_employ_list, headings, f_name)
-    print('')
-    # Save threshold employment type with each key:value on a separate line
-    f_name = '{}_Top_Employment_Percentage_'.format(sample) 
-    ft.save_list_csv(threshold_employ_list, headings, f_name)
-    print('')
-    # Save all employment type counts to a CSV file
-    headings = ['Employment', 'Count']
-    f_name = '{}_Employment_Count_'.format(sample) 
-    ft.save_list_csv(count_employ_list, headings, f_name)
+    print('\nTotal number of {} students in sample: {}\n'.format(sample,
+          total))
+    # Combine Percentage and Count columns
+    combined_lists = combine_lists(percent_employ_list, count_employ_list)
+    # Save % and # data
+    headings = ['Employment', 'Percent', 'Count']
+    f_name = '{}_Employment_Combined_'.format(sample)
+    ft.save_list_csv(combined_lists, headings, f_name)
     ft.process_warning_log(warnings, warnings_to_process)
 
 
