@@ -666,20 +666,12 @@ def process_how_heard_data():
     for x in threshold_heard_list:
         print("{:40} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
-    # Save all how heard % to a CSV file, each key:value on a separate line
-    headings = ['How Heard', 'Percent']
-    f_name = '{}_How_Heard_Percentage_'.format(sample)
-    print('')
-    ft.save_list_csv(percent_heard_list, headings, f_name)
-    # Save threshold how heard with each key:value on a separate line
-    f_name = '{}_Top_How Heard_Percentage_'.format(sample)
-    print('') 
-    ft.save_list_csv(threshold_heard_list, headings, f_name)
-    # Save all how heard counts to a CSV file
-    headings = ['How Heard', 'Count']
-    f_name = '{}_How_Heard_Count_'.format(sample)
-    print('') 
-    ft.save_list_csv(count_heard_list, headings, f_name)
+    # Combine Percentage and Count columns
+    combined_lists = combine_lists(percent_heard_list, count_heard_list)
+    # Save % and # data
+    headings = ['How Heard', 'Percent', 'Count']
+    f_name = '{}_How_Heard_Combined_'.format(sample)
+    ft.save_list_csv(combined_lists, headings, f_name)
     ft.process_warning_log(warnings, warnings_to_process)
 
 
