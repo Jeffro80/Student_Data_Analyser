@@ -41,6 +41,37 @@ def calculate_percent(source_dict):
     return percent_dict, total
     
 
+def combine_lists(percent_list, count_list):
+    """Combine Percent and Count lists into a single list.
+    
+    Args:
+        percent_list (list): Item and percent columns.
+        count_list (list): Item and count columns.
+        
+    Returns:
+        combined (list): List with Item, Percent and Count columns.
+    """
+    combined = []
+    num_items = len(percent_list) # For calculating % complete
+    n = 0
+    for item in percent_list:
+        # Display progress
+        n += 1
+        progress = round((n/num_items) * 100)
+        print("\rProgress: {}{}".format(progress, '%'), end="", flush=True)
+        combined_item = []
+        combined_item.append(item[0]) # Add item name
+        combined_item.append(item[1]) # Add item percentage
+        # Find item in count_list
+        for count_item in count_list:
+            if count_item[0] == item[0]:
+                # Add item count
+                combined_item.append(count_item[1])
+                break
+        combined.append(combined_item)
+    return combined        
+
+
 def convert_ages(ages, age_bands, age_band_values):
     """Convert a list of ages to a list of age band values.
     
@@ -727,20 +758,13 @@ def process_location_data():
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     print('\nTotal number of cities in {} student sample: {}'.format(
             sample, len(unique_cities)))
-    # Save all cities % to a CSV file with each key:value on a separate line
-    headings = ['City', 'Percent']
-    f_name = '{}_Cities_Percentage_'.format(sample)
+    # Combine Percentage and Count columns
+    combined_lists = combine_lists(percent_cities_list, count_cities_list)
+    # Save % and # data
+    headings = ['City', 'Percent', 'Count']
+    f_name = '{}_Cities_Combined_'.format(sample)
     print('') 
-    ft.save_list_csv(percent_cities_list, headings, f_name)
-    # Save threshold cities with each key:value on a separate line
-    f_name = '{}_Top_Cities_Percentage_'.format(sample)
-    print('') 
-    ft.save_list_csv(threshold_cities_list, headings, f_name)
-    # Save all cities counts to a CSV file
-    headings = ['City', 'Count']
-    f_name = '{}_Cities_Count_'.format(sample)
-    print('')
-    ft.save_list_csv(count_cities_list, headings, f_name)
+    ft.save_list_csv(combined_lists, headings, f_name)
     ft.process_warning_log(warnings, warnings_to_process)
 
 
