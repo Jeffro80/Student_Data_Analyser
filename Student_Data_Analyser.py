@@ -534,6 +534,8 @@ def process_employment_data():
           total))
     # Combine Percentage and Count columns
     combined_lists = combine_lists(percent_employ_list, count_employ_list)
+    print('')
+    print('')
     # Save % and # data
     headings = ['Employment', 'Percent', 'Count']
     f_name = '{}_Employment_Combined_'.format(sample)
@@ -607,6 +609,8 @@ def process_ethnicity_data():
     print('')
     # Combine Percentage and Count columns
     combined_lists = combine_lists(percent_eths_list, count_eths_list)
+    print('')
+    print('')
     # Save % and # data
     headings = ['Ethnicity', 'Percent', 'Count']
     f_name = '{}_Ethnicities_Combined_'.format(sample)
@@ -666,8 +670,11 @@ def process_how_heard_data():
     for x in threshold_heard_list:
         print("{:40} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
+    print('')
     # Combine Percentage and Count columns
     combined_lists = combine_lists(percent_heard_list, count_heard_list)
+    print('')
+    print('')
     # Save % and # data
     headings = ['How Heard', 'Percent', 'Count']
     f_name = '{}_How_Heard_Combined_'.format(sample)
@@ -737,8 +744,10 @@ def process_location_data():
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
     print('\nTotal number of cities in {} student sample: {}'.format(
             sample, len(unique_cities)))
+    print('')
     # Combine Percentage and Count columns
     combined_lists = combine_lists(percent_cities_list, count_cities_list)
+    print('')
     # Save % and # data
     headings = ['City', 'Percent', 'Count']
     f_name = '{}_Cities_Combined_'.format(sample)
@@ -860,9 +869,11 @@ def process_study_reason_data():
     for x in threshold_reason_list:
         print("{:50} {:7}%".format(x[0], x[1]))
     print('\nTotal number of {} students in sample: {}'.format(sample, total))
-    # Save all study reasons % to a CSV file, each key:value on a separate line
+    print('')
     # Combine Percentage and Count columns
     combined_lists = combine_lists(percent_reason_list, count_reason_list)
+    print('')
+    print('')
     # Save % and # data
     headings = ['Study Reason', 'Percent', 'Count']
     f_name = '{}_Study_Reason_Combined_'.format(sample)
